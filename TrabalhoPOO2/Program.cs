@@ -236,11 +236,15 @@ public class ItemMunicao : Item
 {
     public int Quantidade { get; private set; }
     public string Tipo { get; private set; }
-    
-    public ItemMunicao(string nome, double pesoUnitario, decimal valorUnitario, 
+    public double PesoUnitario { get; private set; }
+    public decimal ValorUnitario { get; private set; }
+
+    public ItemMunicao(string nome, double pesoUnitario, decimal valorUnitario,
                       int quantidade, string tipo, string raridade = "Comum")
         : base(nome, pesoUnitario * quantidade, valorUnitario * quantidade, "Munição", raridade)
     {
+        PesoUnitario = pesoUnitario;
+        ValorUnitario = valorUnitario;
         Quantidade = quantidade;
         Tipo = tipo;
     }
@@ -254,14 +258,22 @@ public class ItemMunicao : Item
     
     public bool Usar(int quantidade = 1)
     {
-        if (Quantidade >= quantidade)
-        {
-            Quantidade -= quantidade;
-            Peso -= (Peso / (Quantidade + quantidade)) * quantidade;
-            Valor -= (Valor / (Quantidade + quantidade)) * quantidade;
-            return true;
-        }
-        return false;
+        if (!QuantidadeValida(quantidade))
+            return false;
+
+        Quantidade -= quantidade;
+        RecalcularPesoEValor();
+        return true;
+    }
+
+    // Só aceita uma quantidade positiva e que exista no estoque
+    private bool QuantidadeValida(int quantidade) => quantidade > 0 && quantidade <= Quantidade;
+
+    // Peso e valor sempre proporcionais à quantidade que sobrou
+    private void RecalcularPesoEValor()
+    {
+        Peso = PesoUnitario * Quantidade;
+        Valor = ValorUnitario * Quantidade;
     }
     
     public override bool PodeSerEquipado() => false;
@@ -1053,72 +1065,98 @@ public class Menu
         
         try
         {
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
-            
-            Console.Write("Raça: ");
-            string raca = Console.ReadLine();
-            
-            Console.Write("Alinhamento (ex: Leal Bom, Neutro Mau): ");
-            string alinhamento = Console.ReadLine();
-            
-            Console.Write("Nível inicial (1-100): ");
-            int nivel = int.Parse(Console.ReadLine());
-            
-            Console.WriteLine("\n🎭 Escolha a classe:");
-            Console.WriteLine("1. 🛡️  Guerreiro");
-            Console.WriteLine("2. 🔮 Mago");
-            Console.WriteLine("3. 🌿 Druida");
-            Console.WriteLine("4. 🎵 Bardo");
-            Console.Write("Opção: ");
-            
-            int classeOpcao = int.Parse(Console.ReadLine());
-            PersonagemFactory factory = classeOpcao switch
-            {
-                1 => new GuerreiroFactory(),
-                2 => new MagoFactory(),
-                3 => new DruidaFactory(),
-                4 => new BardoFactory(),
-                _ => throw new PersonagemException("Classe inválida")
-            };
-            
+            var (nome, raca, alinhamento, nivel) = LerDadosBasicos();
+            PersonagemFactory factory = EscolherClasse();
+
             var personagem = gerenciador.CriarPersonagem(factory, nome, raca, alinhamento, nivel);
             if (personagem != null)
-            {
-                // Configurar características adicionais
-                Console.WriteLine("\n📝 Configuração adicional:");
-                
-                Console.Write("Altura (m): ");
-                personagem.Altura = double.Parse(Console.ReadLine());
-                
-                Console.Write("Peso (kg): ");
-                personagem.Peso = double.Parse(Console.ReadLine());
-                
-                Console.Write("Cor do cabelo: ");
-                personagem.CorCabelo = Console.ReadLine();
-                
-                Console.Write("Cor dos olhos: ");
-                personagem.CorOlhos = Console.ReadLine();
-                
-                Console.Write("Data de nascimento (dd/mm/aaaa): ");
-                personagem.DataNascimento = DateTime.Parse(Console.ReadLine());
-                
-                Console.Write("História/background (opcional): ");
-                personagem.Historia = Console.ReadLine();
-                
-                // Adicionar itens iniciais
-                AdicionarItensIniciais(personagem);
-                
-                gerenciador.PersonagemAtual = personagem;
-                Console.WriteLine($"\n✅ Personagem '{nome}' criado e selecionado como atual!");
-            }
+                ConcluirCadastro(personagem);
         }
         catch (Exception ex)
         {
             Console.WriteLine($"\n❌ Erro: {ex.Message}");
         }
-        
+
         Aguardar();
+    }
+
+    private (string nome, string raca, string alinhamento, int nivel) LerDadosBasicos()
+    {
+        Console.Write("Nome: ");
+        string nome = Console.ReadLine();
+
+        Console.Write("Raça: ");
+        string raca = Console.ReadLine();
+
+        Console.Write("Alinhamento (ex: Leal Bom, Neutro Mau): ");
+        string alinhamento = Console.ReadLine();
+
+        Console.Write("Nível inicial (1-100): ");
+        int nivel = int.Parse(Console.ReadLine());
+
+        return (nome, raca, alinhamento, nivel);
+    }
+
+    private PersonagemFactory EscolherClasse()
+    {
+        Console.WriteLine("\n🎭 Escolha a classe:");
+        Console.WriteLine("1. 🛡️  Guerreiro");
+        Console.WriteLine("2. 🔮 Mago");
+        Console.WriteLine("3. 🌿 Druida");
+        Console.WriteLine("4. 🎵 Bardo");
+        Console.Write("Opção: ");
+
+        return int.Parse(Console.ReadLine()) switch
+        {
+            1 => new GuerreiroFactory(),
+            2 => new MagoFactory(),
+            3 => new DruidaFactory(),
+            4 => new BardoFactory(),
+            _ => throw new PersonagemException("Classe inválida")
+        };
+    }
+
+    // Se a configuração adicional falhar, o cadastro é desfeito:
+    // não fica personagem "pela metade" na lista.
+    private void ConcluirCadastro(Personagem personagem)
+    {
+        try
+        {
+            LerCaracteristicas(personagem);
+        }
+        catch
+        {
+            gerenciador.Personagens.Remove(personagem);
+            Console.WriteLine("\n↩️ Cadastro cancelado: dados adicionais inválidos.");
+            throw;
+        }
+
+        AdicionarItensIniciais(personagem);
+        gerenciador.PersonagemAtual = personagem;
+        Console.WriteLine($"\n✅ Personagem '{personagem.Nome}' criado e selecionado como atual!");
+    }
+
+    private void LerCaracteristicas(Personagem personagem)
+    {
+        Console.WriteLine("\n📝 Configuração adicional:");
+
+        Console.Write("Altura (m): ");
+        personagem.Altura = double.Parse(Console.ReadLine());
+
+        Console.Write("Peso (kg): ");
+        personagem.Peso = double.Parse(Console.ReadLine());
+
+        Console.Write("Cor do cabelo: ");
+        personagem.CorCabelo = Console.ReadLine();
+
+        Console.Write("Cor dos olhos: ");
+        personagem.CorOlhos = Console.ReadLine();
+
+        Console.Write("Data de nascimento (dd/mm/aaaa): ");
+        personagem.DataNascimento = DateTime.Parse(Console.ReadLine());
+
+        Console.Write("História/background (opcional): ");
+        personagem.Historia = Console.ReadLine();
     }
     
     private void AdicionarItensIniciais(Personagem personagem)

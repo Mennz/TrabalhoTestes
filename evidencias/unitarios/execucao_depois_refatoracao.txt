@@ -1,0 +1,68 @@
+Execução de teste para C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Unitarios\bin\Debug\net8.0\Testes.Unitarios.dll (.NETCoreApp,Version=v8.0)
+Versão do VSTest 17.11.2 (x64)
+
+Iniciando execução de teste, espere...
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 8.0.34)
+[xUnit.net 00:00:00.06]   Discovering: Testes.Unitarios
+[xUnit.net 00:00:00.08]   Discovered:  Testes.Unitarios
+[xUnit.net 00:00:00.08]   Starting:    Testes.Unitarios
+? Habilidade 'Conjura��o Elemental' aprendida!
+? Habilidade 'Recupera��o Arcana' aprendida!
+? Requer n�vel 2 (atual: 1)
+Usado Po��o Pequena. Efeito: Restaura 10 HP
+Po��o Pequena n�o tem mais cargas!
+? Habilidade 'Golpe Poderoso' aprendida!
+? Habilidade 'Recuperar Folego' aprendida!
+? Requer n�vel 2 (atual: 1)
+? Habilidade 'Can��o Inspiradora' aprendida!
+? Requer n�vel 2 (atual: 1)
+? +1000 XP ganhos!
+?? Jaskier subiu para o n�vel 2!
+?? Role os dados para aumentar atributos...
+?? Jaskier subiu para o n�vel 3!
+?? Role os dados para aumentar atributos...
+?? Jaskier subiu para o n�vel 4!
+?? Role os dados para aumentar atributos...
+?? Jaskier subiu para o n�vel 5!
+?? Role os dados para aumentar atributos...
+? Habilidade 'Golpe Poderoso' aprendida!
+? Habilidade 'Recuperar Folego' aprendida!
+? Requer n�vel 2 (atual: 1)
+? +100 XP ganhos!
+?? Aragorn subiu para o n�vel 2!
+?? Role os dados para aumentar atributos...
+[xUnit.net 00:00:00.26]     CT09 - Ao subir para o nível 2 o Guerreiro aprende 'Pele Endurecida' [FAIL]
+[xUnit.net 00:00:00.26]       Assert.Contains() Failure: Filter not matched in collection
+[xUnit.net 00:00:00.26]       Collection: [Habilidade { CustoMana = 10, Descricao = "Um golpe devastador com arma pesada", NivelRequerido = 1, Nome = "Golpe Poderoso", PoderBase = 15, ··· }, Habilidade { CustoMana = 1, Descricao = "Recuperar o Fôlego é uma habilidade que representa"···, NivelRequerido = 1, Nome = "Recuperar Folego", PoderBase = 0, ··· }]
+? Po��o Rara adicionado ao invent�rio
+[xUnit.net 00:00:00.26]       Stack Trace:
+? Adaga adicionado ao invent�rio
+? Elmo R�nico adicionado ao invent�rio
+[xUnit.net 00:00:00.26]         C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Unitarios\TestesUnitarios.cs(124,0): at Testes.Unitarios.TestesUnitarios.CT09_SubirNivel_LiberaHabilidadeDoNovoNivel()
+[xUnit.net 00:00:00.26]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.26]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Aprovado CT03 - Inventário com capacidade zero é rejeitado [127 ms]
+  Aprovado CT06 - Mago nível 1 nasce com mana máxima de 83 [5 ms]
+  Aprovado CT02 - Item com nome em branco é rejeitado [< 1 ms]
+  Aprovado CT01 - Item com valor negativo é rejeitado [< 1 ms]
+  Aprovado CT10 - Usar munição com quantidade negativa é recusado [< 1 ms]
+  Aprovado CT04 - Consumível perde a carga ao ser usado e recusa uso sem cargas [< 1 ms]
+  Aprovado CT07 - XP zero ou negativo é rejeitado e o personagem não muda [< 1 ms]
+  Aprovado CT08 - 1000 XP de uma vez sobe vários níveis (nível 5, sobra 188 XP) [< 1 ms]
+  Com falha CT09 - Ao subir para o nível 2 o Guerreiro aprende 'Pele Endurecida' [5 ms]
+  Mensagem de erro:
+   Assert.Contains() Failure: Filter not matched in collection
+Collection: [Habilidade { CustoMana = 10, Descricao = "Um golpe devastador com arma pesada", NivelRequerido = 1, Nome = "Golpe Poderoso", PoderBase = 15, ··· }, Habilidade { CustoMana = 1, Descricao = "Recuperar o Fôlego é uma habilidade que representa"···, NivelRequerido = 1, Nome = "Recuperar Folego", PoderBase = 0, ··· }]
+  Rastreamento de pilha:
+     at Testes.Unitarios.TestesUnitarios.CT09_SubirNivel_LiberaHabilidadeDoNovoNivel() in C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Unitarios\TestesUnitarios.cs:line 124
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.28]   Finished:    Testes.Unitarios
+  Aprovado CT05 - Busca por raridade ignora maiúsculas e minúsculas [3 ms]
+
+Falha na Execução de Teste.
+Total de testes: 10
+     Aprovados: 9
+     Com falha: 1
+Tempo total: 0,6332 Segundos
