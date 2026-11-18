@@ -1,0 +1,165 @@
+ℹ️ Nenhum arquivo encontrado. Criando nova lista...
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 1
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+👤 CRIAR NOVO PERSONAGEM
+
+Nome: Radagast
+Raça: Humano
+Alinhamento (ex: Leal Bom, Neutro Mau): Neutro Bom
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 3
+✅ Habilidade 'Benção Elemental' aprendida!
+✅ Habilidade 'Druidico' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Radagast criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,75
+Peso (kg): 70
+Cor do cabelo: Castanho
+Cor dos olhos: Verdes
+Data de nascimento (dd/mm/aaaa): 15/03/1995
+História/background (opcional): Guardião da floresta
+✅ Foice Natural adicionado ao inventário
+✅ Sementes Mágicas adicionado ao inventário
+
+✅ Personagem 'Radagast' criado e selecionado como atual!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Radagast
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 5
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Radagast
+
+🎒 INVENTÁRIO DE Radagast
+
+📦 Capacidade: 2,8/60,0 kg
+💰 Valor total: R$ 60,00
+🔢 Itens: 2
+
+1. 📋 Exibir inventário completo
+2. ➕ Adicionar item
+3. ➖ Remover item
+4. 🔍 Buscar item
+5. 🛡️  Equipar item
+6. 📦 Desequipar item
+7. 📊 Ordenar inventário
+8. 🎁 Criar itens de exemplo
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 1
+
+=== INVENTÁRIO ===
+Peso: 2,8/60,0 kg
+Itens: 2
+Valor total: R$ 60,00
+==================
+
+ARMA:
+  Foice Natural [Comum]
+    Tipo: Arma
+    Peso: 2,5 kg
+    Valor: R$ 45,00
+    Slot: Arma
+    Ataque: +6
+    Tipo de Dano: Corte
+    Alcance: 1
+
+CONSUMÍVEL:
+  Sementes Mágicas [Comum]
+    Tipo: Consumível
+    Peso: 0,3 kg
+    Valor: R$ 15,00
+    Efeito: Cresce plantas rapidamente
+    Cargas: 5
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Radagast
+
+🎒 INVENTÁRIO DE Radagast
+
+📦 Capacidade: 2,8/60,0 kg
+💰 Valor total: R$ 60,00
+🔢 Itens: 2
+
+1. 📋 Exibir inventário completo
+2. ➕ Adicionar item
+3. ➖ Remover item
+4. 🔍 Buscar item
+5. 🛡️  Equipar item
+6. 📦 Desequipar item
+7. 📊 Ordenar inventário
+8. 🎁 Criar itens de exemplo
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 0
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Radagast
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0
+
+💾 Salvando personagens...
+✅ Personagens salvos com sucesso!
+👋 Até logo!

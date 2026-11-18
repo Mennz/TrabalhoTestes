@@ -1,0 +1,145 @@
+ℹ️ Nenhum arquivo encontrado. Criando nova lista...
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 1
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+👤 CRIAR NOVO PERSONAGEM
+
+Nome: Saruman
+Raça: Maia
+Alinhamento (ex: Leal Bom, Neutro Mau): Neutro Mau
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 2
+✅ Habilidade 'Conjuração Elemental' aprendida!
+✅ Habilidade 'Recuperação Arcana' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Saruman criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,80
+Peso (kg): 80
+Cor do cabelo: Preto
+Cor dos olhos: Castanhos
+Data de nascimento (dd/mm/aaaa): 20/05/1998
+História/background (opcional): 
+✅ Cajado Arcano adicionado ao inventário
+✅ Túnica de Mago adicionado ao inventário
+✅ Poção de Mana adicionado ao inventário
+
+✅ Personagem 'Saruman' criado e selecionado como atual!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Saruman
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 5
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Saruman
+
+🎒 INVENTÁRIO DE Saruman
+
+📦 Capacidade: 4,5/60,0 kg
+💰 Valor total: R$ 145,00
+🔢 Itens: 3
+
+1. 📋 Exibir inventário completo
+2. ➕ Adicionar item
+3. ➖ Remover item
+4. 🔍 Buscar item
+5. 🛡️  Equipar item
+6. 📦 Desequipar item
+7. 📊 Ordenar inventário
+8. 🎁 Criar itens de exemplo
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 6
+
+📦 DESEQUIPAR ITEM:
+❌ Nenhum item equipado.
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Saruman
+
+🎒 INVENTÁRIO DE Saruman
+
+📦 Capacidade: 4,5/60,0 kg
+💰 Valor total: R$ 145,00
+🔢 Itens: 3
+
+1. 📋 Exibir inventário completo
+2. ➕ Adicionar item
+3. ➖ Remover item
+4. 🔍 Buscar item
+5. 🛡️  Equipar item
+6. 📦 Desequipar item
+7. 📊 Ordenar inventário
+8. 🎁 Criar itens de exemplo
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 0
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Saruman
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0
+
+💾 Salvando personagens...
+✅ Personagens salvos com sucesso!
+👋 Até logo!

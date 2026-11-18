@@ -1,0 +1,180 @@
+ℹ️ Nenhum arquivo encontrado. Criando nova lista...
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 1
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+👤 CRIAR NOVO PERSONAGEM
+
+Nome: Boromir
+Raça: Humano
+Alinhamento (ex: Leal Bom, Neutro Mau): Leal Bom
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 1
+✅ Habilidade 'Golpe Poderoso' aprendida!
+✅ Habilidade 'Recuperar Folego' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Boromir criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,80
+Peso (kg): 80
+Cor do cabelo: Preto
+Cor dos olhos: Castanhos
+Data de nascimento (dd/mm/aaaa): 20/05/1998
+História/background (opcional): 
+✅ Espada Longa adicionado ao inventário
+✅ Armadura de Couro adicionado ao inventário
+✅ Poção de Cura adicionado ao inventário
+
+✅ Personagem 'Boromir' criado e selecionado como atual!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Boromir
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 4
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Boromir
+
+🛠️  GERENCIANDO: Boromir
+
+1. 📊 Exibir status completo
+2. 🛡️  Exibir equipamentos
+3. 🎯 Exibir habilidades
+4. ✨ Adicionar experiência
+5. 📝 Editar características
+6. 🎲 Rolar dados de atributos
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 5
+
+📝 EDITAR CARACTERÍSTICAS:
+Nova altura (m): 1,90
+Novo peso (kg): 95
+Nova cor do cabelo: Grisalho
+Nova cor dos olhos: Cinzentos
+Nova história/background: Veterano de guerra
+
+✅ Características atualizadas!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Boromir
+
+🛠️  GERENCIANDO: Boromir
+
+1. 📊 Exibir status completo
+2. 🛡️  Exibir equipamentos
+3. 🎯 Exibir habilidades
+4. ✨ Adicionar experiência
+5. 📝 Editar características
+6. 🎲 Rolar dados de atributos
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 1
+
+==================================================
+👤 Boromir - Guerreiro 1
+🏹 Humano | Leal Bom | 28 anos
+--------------------------------------------------
+❤️  STATUS:
+  Vida: 55/55
+  Mana: 14/14
+  XP: 0/100 (0,0%)
+
+📊 ATRIBUTOS:
+  Força: 17 | Destreza: 13
+  Constituição: 15 | Inteligência: 9
+  Sabedoria: 11 | Carisma: 11
+
+📏 CARACTERÍSTICAS:
+  Altura: 1,90m | Peso: 95,0kg
+  Cabelo: Grisalho | Olhos: Cinzentos
+
+📖 HISTÓRIA:
+  Veterano de guerra
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Boromir
+
+🛠️  GERENCIANDO: Boromir
+
+1. 📊 Exibir status completo
+2. 🛡️  Exibir equipamentos
+3. 🎯 Exibir habilidades
+4. ✨ Adicionar experiência
+5. 📝 Editar características
+6. 🎲 Rolar dados de atributos
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: 0
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Boromir
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0
+
+💾 Salvando personagens...
+✅ Personagens salvos com sucesso!
+👋 Até logo!

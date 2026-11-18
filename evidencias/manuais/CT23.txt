@@ -1,0 +1,42 @@
+ℹ️ Nenhum arquivo encontrado. Criando nova lista...
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: abc
+
+❌ Opção inválida! Digite um número.
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0
+
+💾 Salvando personagens...
+✅ Personagens salvos com sucesso!
+👋 Até logo!

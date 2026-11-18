@@ -1,0 +1,107 @@
+ℹ️ Nenhum arquivo encontrado. Criando nova lista...
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 1
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+👤 CRIAR NOVO PERSONAGEM
+
+Nome: Dandelion
+Raça: Humano
+Alinhamento (ex: Leal Bom, Neutro Mau): Caótico Bom
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 4
+✅ Habilidade 'Canção Inspiradora' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Dandelion criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,80
+Peso (kg): 80
+Cor do cabelo: Preto
+Cor dos olhos: Castanhos
+Data de nascimento (dd/mm/aaaa): 20/05/1998
+História/background (opcional): 
+✅ Alaúde adicionado ao inventário
+✅ Pó de Fada adicionado ao inventário
+
+✅ Personagem 'Dandelion' criado e selecionado como atual!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Dandelion
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 3
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Dandelion
+
+🔍 SELECIONAR PERSONAGEM
+
+1. Dandelion - Bardo Nível 1
+
+➡️  Escolha o número do personagem: 5
+
+❌ Número inválido!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Dandelion
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0
+
+💾 Salvando personagens...
+✅ Personagens salvos com sucesso!
+👋 Até logo!

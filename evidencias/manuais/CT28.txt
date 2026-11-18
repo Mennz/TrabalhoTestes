@@ -1,0 +1,121 @@
+ℹ️ Nenhum arquivo encontrado. Criando nova lista...
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 1
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+👤 CRIAR NOVO PERSONAGEM
+
+Nome: Tauriel
+Raça: Elfa
+Alinhamento (ex: Leal Bom, Neutro Mau): Caótico Bom
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 1
+✅ Habilidade 'Golpe Poderoso' aprendida!
+✅ Habilidade 'Recuperar Folego' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Tauriel criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,80
+Peso (kg): 80
+Cor do cabelo: Preto
+Cor dos olhos: Castanhos
+Data de nascimento (dd/mm/aaaa): 20/05/1998
+História/background (opcional): 
+✅ Espada Longa adicionado ao inventário
+✅ Armadura de Couro adicionado ao inventário
+✅ Poção de Cura adicionado ao inventário
+
+✅ Personagem 'Tauriel' criado e selecionado como atual!
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Tauriel
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 5
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Tauriel
+
+🎒 INVENTÁRIO DE Tauriel
+
+📦 Capacidade: 11,5/60,0 kg
+💰 Valor total: R$ 100,00
+🔢 Itens: 3
+
+1. 📋 Exibir inventário completo
+2. ➕ Adicionar item
+3. ➖ Remover item
+4. 🔍 Buscar item
+5. 🛡️  Equipar item
+6. 📦 Desequipar item
+7. 📊 Ordenar inventário
+8. 🎁 Criar itens de exemplo
+0. ↩️  Voltar ao menu principal
+
+➡️  Escolha uma opção: x
+
+❌ Opção inválida! Digite um número.
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Tauriel
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0
+
+💾 Salvando personagens...
+✅ Personagens salvos com sucesso!
+👋 Até logo!
