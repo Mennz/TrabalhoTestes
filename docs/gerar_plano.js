@@ -283,7 +283,7 @@ img.tela { width: 100%; border: 1px solid #888; }
 <div class="capa">
   <div class="topo">Pontifícia Universidade Católica de Minas Gerais<br>Sistemas de Informação<br>Teste e Manutenção de Software</div>
   <div class="meio"><p>Sistema de Gerenciamento de Personagens de RPG (TrabalhoPOO2)</p><h1>Plano do Projeto de Testes</h1><p>Versão: 1.0</p></div>
-  <div class="topo" style="font-weight:normal">Aluno: <b>${esc(ALUNO)}</b><br>Belo Horizonte, ${DATA}</div>
+  <div class="topo" style="font-weight:normal">Aluno: <b>${esc(ALUNO)}</b><br>Betim, ${DATA}</div>
 </div>
 
 <h1>Descrição do Documento</h1>
