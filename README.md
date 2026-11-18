@@ -2,6 +2,8 @@
 
 Trabalho de **Teste e Manutenção de Software** (Sistemas de Informação – PUC Minas).
 
+**Integrantes:** Bernardo Reis, Carlos Diniz, Davi Mendoza e Luan Santos
+
 Sistema testado: **Sistema de Gerenciamento de Personagens de RPG** (Trabalho Interdisciplinar de POO, C# / .NET 8).
 Repositório original do sistema: https://github.com/ThiagoBotelho12/TrabalhoPOO2
 
