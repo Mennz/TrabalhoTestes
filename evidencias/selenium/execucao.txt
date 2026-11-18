@@ -7,37 +7,35 @@ Iniciando execução de teste, espere...
 [xUnit.net 00:00:00.06]   Discovering: Testes.Selenium
 [xUnit.net 00:00:00.08]   Discovered:  Testes.Selenium
 [xUnit.net 00:00:00.08]   Starting:    Testes.Selenium
-Starting ChromeDriver 157.0.8103.78 (4b3d0dabb8250b6f152d2d85d79e7706e309d087-refs/branch-heads/8103@{#1573}) on port 50988
+Starting ChromeDriver 157.0.8103.78 (4b3d0dabb8250b6f152d2d85d79e7706e309d087-refs/branch-heads/8103@{#1573}) on port 51025
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully on port 50988.
-  Aprovado CT11 - Criar personagem Mago válido [484 ms]
-  Aprovado CT12 - Criar personagem sem raça mostra erro [260 ms]
-  Aprovado CT13 - Nível 100 (limite superior) é aceito [261 ms]
-  Aprovado CT14 - Bardo recebe os itens iniciais da classe [298 ms]
-  Aprovado CT15 - Adicionar munição calcula peso e valor pela quantidade [559 ms]
-  Aprovado CT16 - Buscar item por tipo 'Arma' [542 ms]
-[1794967197.966][SEVERE]: Timed out receiving message from renderer: 10.000
-[1794967197.967][WARNING]: screenshot failed, retrying timeout: Timed out receiving message from renderer: 10.000
-  Aprovado CT17 - Ordenar inventário por nome (A-Z) [10 s]
+ChromeDriver was started successfully on port 51025.
+  Aprovado CT11 - Criar personagem Mago válido [601 ms]
+  Aprovado CT12 - Criar personagem sem raça mostra erro [265 ms]
+  Aprovado CT13 - Nível 100 (limite superior) é aceito [285 ms]
+  Aprovado CT14 - Bardo recebe os itens iniciais da classe [309 ms]
+  Aprovado CT15 - Adicionar munição calcula peso e valor pela quantidade [592 ms]
+  Aprovado CT16 - Buscar item por tipo 'Arma' [388 ms]
+  Aprovado CT17 - Ordenar inventário por nome (A-Z) [362 ms]
   Aprovado CT18 - Equipar armadura aumenta a vida máxima (55 para 70) [3 s]
-[xUnit.net 00:00:17.87]     CT20 - Ao subir para o nível 2 a habilidade 'Escudo Arcano' é liberada [FAIL]
-[xUnit.net 00:00:17.87]       Assert.Contains() Failure: Item not found in collection
-[xUnit.net 00:00:17.87]       Collection: ["Conjuração Elemental", "Recuperação Arcana"]
-[xUnit.net 00:00:17.87]       Not found:  "Escudo Arcano"
-[xUnit.net 00:00:17.88]       Stack Trace:
-[xUnit.net 00:00:17.88]         C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Selenium\TestesSelenium.cs(242,0): at Testes.Selenium.TestesFuncionaisSelenium.CT20_SubirNivelLiberaHabilidade()
-[xUnit.net 00:00:17.88]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
-[xUnit.net 00:00:17.88]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
-[xUnit.net 00:00:17.98]   Finished:    Testes.Selenium
-  Aprovado CT19 - Adicionar 0 XP mostra erro [359 ms]
-  Com falha CT20 - Ao subir para o nível 2 a habilidade 'Escudo Arcano' é liberada [382 ms]
+[xUnit.net 00:00:07.75]     CT20 - Ao subir para o nível 2 a habilidade 'Escudo Arcano' é liberada [FAIL]
+[xUnit.net 00:00:07.75]       Assert.Contains() Failure: Item not found in collection
+[xUnit.net 00:00:07.75]       Collection: ["Conjuração Elemental", "Recuperação Arcana"]
+[xUnit.net 00:00:07.75]       Not found:  "Escudo Arcano"
+[xUnit.net 00:00:07.75]       Stack Trace:
+[xUnit.net 00:00:07.75]         C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Selenium\TestesSelenium.cs(244,0): at Testes.Selenium.TestesFuncionaisSelenium.CT20_SubirNivelLiberaHabilidade()
+[xUnit.net 00:00:07.75]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:07.75]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:07.85]   Finished:    Testes.Selenium
+  Aprovado CT19 - Adicionar 0 XP mostra erro [366 ms]
+  Com falha CT20 - Ao subir para o nível 2 a habilidade 'Escudo Arcano' é liberada [371 ms]
   Mensagem de erro:
    Assert.Contains() Failure: Item not found in collection
 Collection: ["Conjuração Elemental", "Recuperação Arcana"]
 Not found:  "Escudo Arcano"
   Rastreamento de pilha:
-     at Testes.Selenium.TestesFuncionaisSelenium.CT20_SubirNivelLiberaHabilidade() in C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Selenium\TestesSelenium.cs:line 242
+     at Testes.Selenium.TestesFuncionaisSelenium.CT20_SubirNivelLiberaHabilidade() in C:\Users\Davi Mendoza\AppData\Local\Temp\claude\ebaa0922aeb09738\e15e9412-4994-48cf-a880-5e1c80064c38\scratchpad\p\Testes.Selenium\TestesSelenium.cs:line 244
    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
 
@@ -45,4 +43,4 @@ Falha na Execução de Teste.
 Total de testes: 10
      Aprovados: 9
      Com falha: 1
-Tempo total: 18,3843 Segundos
+Tempo total: 8,1883 Segundos

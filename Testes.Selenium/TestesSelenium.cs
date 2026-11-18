@@ -24,9 +24,11 @@ public class SiteFixture : IDisposable
         Site.StartAsync().GetAwaiter().GetResult();
 
         var opcoes = new ChromeOptions();
-        if (Environment.GetEnvironmentVariable("SELENIUM_HEADLESS") == "1")
+        bool semJanela = Environment.GetEnvironmentVariable("SELENIUM_HEADLESS") == "1";
+        if (semJanela)
             opcoes.AddArgument("--headless=new");
-        opcoes.AddArgument("--window-size=1300,1000");
+        // Sem janela, a "tela" é alta para o print pegar a página inteira
+        opcoes.AddArgument(semJanela ? "--window-size=1300,2300" : "--window-size=1300,1000");
         Navegador = new ChromeDriver(opcoes);
         Navegador.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
     }

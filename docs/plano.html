@@ -1,0 +1,894 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Plano do Projeto de Testes</title>
+<style>
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+body { font-family: Arial, Helvetica, sans-serif; font-size: 10.5pt; color: #111; line-height: 1.35; }
+h1 { font-size: 16pt; margin: 18px 0 8px; border-bottom: 2px solid #1f3864; padding-bottom: 3px; color: #1f3864; }
+h2 { font-size: 12.5pt; margin: 14px 0 6px; color: #1f3864; }
+h3 { font-size: 11pt; margin: 10px 0 4px; }
+.capa { height: 250mm; display: flex; flex-direction: column; justify-content: space-between; text-align: center; page-break-after: always; }
+.capa .topo { font-size: 13pt; font-weight: bold; } .capa .meio h1 { border: 0; font-size: 22pt; } .capa .meio p { font-size: 14pt; margin: 6px 0; }
+.quebra { page-break-before: always; }
+table { border-collapse: collapse; width: 100%; margin: 6px 0; }
+td, th { border: 1px solid #555; padding: 4px 6px; vertical-align: top; text-align: left; font-size: 9.5pt; }
+th { background: #d9d9d9; }
+table.ct th { width: 27%; } table.ct ol { margin: 0; padding-left: 18px; }
+td.falha { background: #fde8e8; } td.ok { background: #eaf6ea; }
+.caso { page-break-inside: avoid; margin-bottom: 14px; }
+.rot { margin: 4px 0 2px; font-weight: bold; font-size: 9.5pt; }
+.print { border: 1px solid #333; border-radius: 4px; overflow: hidden; margin: 4px 0 6px; page-break-inside: avoid; }
+.print .barra { background: #2d2d30; color: #ccc; font-size: 8pt; padding: 2px 8px; font-family: Consolas, monospace; }
+.print pre { margin: 0; background: #0c0c0c; color: #e8e8e8; font-family: Consolas, 'Cascadia Mono', monospace; font-size: 7.6pt; line-height: 1.25; padding: 6px 8px; white-space: pre-wrap; }
+.codigo pre { background: #1e1e1e; color: #dcdcdc; font-size: 7.8pt; }
+img.tela { width: 100%; border: 1px solid #888; }
+.lado { display: flex; gap: 8px; } .lado > div { flex: 1; min-width: 0; }
+.nota { font-size: 9pt; color: #333; }
+</style></head><body>
+
+<div class="capa">
+  <div class="topo">Pontifícia Universidade Católica de Minas Gerais<br>Sistemas de Informação<br>Teste e Manutenção de Software</div>
+  <div class="meio"><p>Sistema de Gerenciamento de Personagens de RPG (TrabalhoPOO2)</p><h1>Plano do Projeto de Testes</h1><p>Versão: 1.0</p></div>
+  <div class="topo" style="font-weight:normal">Aluno: <b>Davi Mendoza Rezende</b><br>Belo Horizonte, 17/11/2026</div>
+</div>
+
+<h1>Descrição do Documento</h1>
+<table><tr><th style="width:20%">OBJETIVO</th><td>Este documento tem como objetivo documentar os testes feitos na aplicação Sistema de Gerenciamento de Personagens de RPG (TrabalhoPOO2).</td></tr>
+<tr><th>LOCALIZAÇÃO</th><td>Repositório de testes: [link do seu repositório no GitHub] (pasta <i>docs</i>). Sistema base (TI): https://github.com/ThiagoBotelho12/TrabalhoPOO2</td></tr></table>
+
+<h2>Histórico de Versões do Documento</h2>
+<table><tr><th>VERSÃO</th><th>OBJETIVO</th><th>DATA</th><th>RESPONSÁVEL</th></tr>
+<tr><td>1.1</td><td>Preencher o plano de testes</td><td>17/11/2026</td><td>Davi Mendoza Rezende</td></tr>
+<tr><td>1.2</td><td>Preencher Produtos Liberados e Fluxo de Trabalho</td><td>17/11/2026</td><td>Davi Mendoza Rezende</td></tr>
+<tr><td>1.3</td><td>Preencher Necessidades Ambientais</td><td>17/11/2026</td><td>Davi Mendoza Rezende</td></tr></table>
+
+<h2>Aprovações Internas</h2>
+<table><tr><th>PERFIL</th><th>NOME</th><th>DATA</th></tr>
+<tr><td>Analista de Sistemas</td><td>Davi Mendoza Rezende</td><td>17/11/2026</td></tr>
+<tr><td>Analista de Qualidade</td><td>Davi Mendoza Rezende</td><td>17/11/2026</td></tr></table>
+
+<h2>Índice</h2>
+<ol><li>Visão geral (Objetivo; Descrição do produto a ser testado)</li><li>Escopo (Planejamento do escopo)</li><li>Itens-alvo dos testes</li><li>Resumo dos testes planejados</li>
+<li>Casos de teste: unitários, funcionais automatizados (Selenium) e funcionais manuais</li><li>Refatoração de 2 métodos</li><li>Relatório de defeitos</li><li>Execução, repositório e vídeo</li></ol>
+
+<h1 class="quebra">1. Visão geral</h1>
+<h2>1.1 Objetivo</h2>
+<p>O documento do plano de testes tem como objetivo relatar os requisitos que serão testados e descrever as técnicas adotadas nesses testes: 10 testes unitários automatizados (xUnit), 10 testes funcionais automatizados (Selenium WebDriver) e 10 testes funcionais manuais com registro de prints, além da refatoração de 2 métodos e do relatório de defeitos.</p>
+<p><b>Carga horária estimada:</b> 12 horas (planejamento 2 h; testes unitários 2 h; testes Selenium 3 h; testes manuais 2 h; refatoração e reteste 1 h; relatório e vídeo 2 h).</p>
+<p><b>Recursos necessários:</b> computador com Windows 10, .NET SDK 8, Google Chrome, xUnit 2.9, Selenium WebDriver 4.27 (o ChromeDriver é baixado automaticamente pelo Selenium Manager), Git e GitHub, Visual Studio ou Visual Studio Code.</p>
+<h2>1.2 Descrição do produto a ser testado</h2>
+<p>O Sistema de Gerenciamento de Personagens de RPG é uma aplicação de console em C# (.NET 8), desenvolvida como Trabalho Interdisciplinar de Programação Orientada a Objetos. Ele permite criar personagens de quatro classes (Guerreiro, Mago, Druida e Bardo) por meio do padrão Factory Method, controlar nível, experiência, atributos e habilidades, e gerenciar um inventário com armas, equipamentos, consumíveis e munição (adicionar, remover, buscar, ordenar, equipar e desequipar). Os personagens podem ser salvos e carregados em JSON.</p>
+<p><b>GitHub do sistema (TI):</b> https://github.com/ThiagoBotelho12/TrabalhoPOO2<br><b>GitHub dos testes:</b> [link do seu repositório no GitHub]</p>
+<p class="nota">Como o sistema é de console e o Selenium só testa páginas web, o projeto de testes inclui uma tela web mínima (projeto Sistema.Web) que chama as mesmas classes do sistema (GerenciadorPersonagens, fábricas, Inventario, Personagem), sem reescrever nenhuma regra de negócio.</p>
+
+<h1>2. Escopo</h1>
+<h2>2.1 Planejamento do escopo</h2>
+<p>Os testes ocorrerão nos módulos de <b>criação de personagens</b>, <b>gerenciamento do personagem</b> (experiência, nível, habilidades e características) e <b>inventário</b> (itens, busca, ordenação e equipamentos). Serão empregados testes de unidade (classes Item, ItemConsumivel, ItemMunicao, Inventario, Personagem e fábricas) e testes de sistema (funcionais automatizados e manuais). A persistência em JSON (opções 6 e 7) e os métodos de combate (Atacar e UsarHabilidadeEspecial) não serão testados neste plano.</p>
+
+<h1>3. Itens-alvo dos testes</h1>
+<h3>UC1: Criar personagem</h3>
+<p><b>01 - Descrição da história/necessidade:</b> Como jogador, quero criar um personagem informando nome, raça, alinhamento, nível e classe, e depois altura, peso, cores de cabelo e olhos, data de nascimento e história.</p>
+<p><b>02 - O que deve ser feito:</b> Menu "Criar novo personagem" com a leitura dos dados; criação pela fábrica da classe escolhida; itens iniciais da classe; seleção automática do personagem criado.</p>
+<p><b>03 - Regras de negócio:</b> Nome com pelo menos 2 caracteres; raça e alinhamento obrigatórios; nível entre 1 e 100; classe entre 1 e 4.</p>
+<h3>UC2: Gerenciar personagem</h3>
+<p><b>01 - Descrição:</b> Como jogador, quero ver o status, ganhar experiência, subir de nível, aprender habilidades e editar as características do meu personagem.</p>
+<p><b>02 - O que deve ser feito:</b> Exibir status, equipamentos e habilidades; adicionar experiência; editar características; rolar atributos.</p>
+<p><b>03 - Regras de negócio:</b> XP deve ser positivo; o limite do nível N é 100 × 1,5^(N-1); ao subir de nível os atributos aumentam e vida e mana são restauradas; habilidades exigem nível mínimo.</p>
+<h3>UC3: Gerenciar inventário</h3>
+<p><b>01 - Descrição:</b> Como jogador, quero guardar, remover, buscar e ordenar os itens do meu personagem.</p>
+<p><b>02 - O que deve ser feito:</b> Adicionar armas, equipamentos, consumíveis e munição; remover por nome; buscar por nome, tipo ou raridade; ordenar por nome, peso ou valor.</p>
+<p><b>03 - Regras de negócio:</b> Item com nome, peso maior que zero e valor não negativo; o peso total não pode passar da capacidade (50 + nível × 10 kg); munição tem peso e valor proporcionais à quantidade.</p>
+<h3>UC4: Equipar e desequipar</h3>
+<p><b>01 - Descrição:</b> Como jogador, quero equipar armas e armaduras nos slots do personagem e tirá-las depois.</p>
+<p><b>02 - O que deve ser feito:</b> Listar os itens equipáveis; equipar no slot do item; desequipar devolvendo ao inventário.</p>
+<p><b>03 - Regras de negócio:</b> Slots Cabeça, Torso, Mãos, Pés e Arma; requisito de atributo mínimo 10; cada ponto de defesa soma 5 de vida máxima.</p>
+
+<h1>4. Resumo dos testes planejados</h1>
+<h3>Testes de unidade (xUnit)</h3><ul><li><b>CT01</b>: Rejeitar item com valor negativo.</li><li><b>CT02</b>: Rejeitar item com nome em branco.</li><li><b>CT03</b>: Rejeitar inventário com capacidade zero.</li><li><b>CT04</b>: Consumível perde carga e recusa uso sem cargas.</li><li><b>CT05</b>: Busca por raridade ignora maiúsculas/minúsculas.</li><li><b>CT06</b>: Mago nível 1 nasce com mana máxima de 83.</li><li><b>CT07</b>: XP zero ou negativo é rejeitado.</li><li><b>CT08</b>: 1000 XP de uma vez sobe vários níveis.</li><li><b>CT09</b>: Subir para o nível 2 libera a habilidade "Pele Endurecida".</li><li><b>CT10</b>: Usar munição com quantidade negativa é recusado.</li></ul>
+<h3>Testes funcionais (automatizados – Selenium)</h3><ul><li><b>CT11</b>: Criar personagem Mago válido.</li><li><b>CT12</b>: Criar personagem sem raça.</li><li><b>CT13</b>: Nível 100 (limite superior) é aceito.</li><li><b>CT14</b>: Bardo recebe os itens iniciais da classe.</li><li><b>CT15</b>: Adicionar munição calcula peso e valor pela quantidade.</li><li><b>CT16</b>: Buscar item por tipo "Arma".</li><li><b>CT17</b>: Ordenar inventário por nome (A-Z).</li><li><b>CT18</b>: Equipar armadura aumenta a vida máxima.</li><li><b>CT19</b>: Adicionar 0 XP mostra erro.</li><li><b>CT20</b>: Subir para o nível 2 libera "Escudo Arcano".</li></ul>
+<h3>Testes funcionais (manuais)</h3><ul><li><b>CT21</b>: Criar personagem Druida com todos os dados.</li><li><b>CT22</b>: Recusar classe inexistente.</li><li><b>CT23</b>: Texto no lugar do número no menu principal.</li><li><b>CT24</b>: Selecionar personagem com número inexistente.</li><li><b>CT25</b>: Editar características do personagem.</li><li><b>CT26</b>: Buscar itens por raridade "Raro".</li><li><b>CT27</b>: Gerenciar sem personagem selecionado.</li><li><b>CT28</b>: Texto inválido dentro do menu de inventário.</li><li><b>CT29</b>: Data de nascimento inválida no cadastro.</li><li><b>CT30</b>: Desequipar sem nenhum item equipado.</li></ul>
+<h3>Resultado geral</h3>
+<table><tr><th>Categoria</th><th>Casos</th><th>Aprovados</th><th>Reprovados</th><th>Defeitos</th></tr>
+<tr><td>Unitários</td><td>10</td><td>8 (9 após a refatoração)</td><td>2 (CT09, CT10)</td><td>DEF-01, DEF-02</td></tr>
+<tr><td>Funcionais automatizados (Selenium)</td><td>10</td><td>9</td><td>1 (CT20)</td><td>DEF-01, DEF-03 (observado no CT13)</td></tr>
+<tr><td>Funcionais manuais</td><td>10</td><td>7 (8 após a refatoração)</td><td>3 (CT27, CT28, CT29)</td><td>DEF-04, DEF-05, DEF-06</td></tr></table>
+
+<h1 class="quebra">5. Casos de teste</h1>
+<h2>5.1 Testes unitários (CT01 a CT10)</h2>
+<p>Projeto <i>Testes.Unitarios</i>, arquivo <i>TestesUnitarios.cs</i>. Todos seguem o padrão Arrange / Act / Assert. Execução: <code>dotnet test Testes.Unitarios</code>.</p>
+<div class="print"><div class="barra">dotnet test Testes.Unitarios – execução no sistema original</div><pre>  Aprovado CT01 - Item com valor negativo é rejeitado
+  Aprovado CT02 - Item com nome em branco é rejeitado
+  Aprovado CT03 - Inventário com capacidade zero é rejeitado
+  Aprovado CT04 - Consumível perde a carga ao ser usado e recusa uso sem cargas
+  Aprovado CT05 - Busca por raridade ignora maiúsculas e minúsculas
+  Aprovado CT06 - Mago nível 1 nasce com mana máxima de 83
+  Aprovado CT07 - XP zero ou negativo é rejeitado e o personagem não muda
+  Aprovado CT08 - 1000 XP de uma vez sobe vários níveis (nível 5, sobra 188 XP)
+  Com falha CT09 - Ao subir para o nível 2 o Guerreiro aprende 'Pele Endurecida'
+  Com falha CT10 - Usar munição com quantidade negativa é recusado
+Total de testes: 10
+     Aprovados: 8
+     Com falha: 2</pre></div>
+<div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT01 – Rejeitar item com valor negativo</b></td></tr>
+<tr><th>Pré-Condição</th><td>Projeto Testes.Unitarios referenciando o projeto TrabalhoPOO2; execução com dotnet test</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste cria um ItemConsumivel "Antídoto" com valor -5.</li><li>O construtor de Item valida os dados.</li><li>O sistema lança ArgumentException.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Nome "Antídoto", peso 0,2 kg, valor -5, efeito "Cura veneno", 1 carga</td></tr>
+<tr><th>Saída esperada</th><td>ArgumentException com a mensagem "Valor não pode ser negativo"</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Exceção lançada com a mensagem esperada. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT01</div><pre>  Aprovado CT01 - Item com valor negativo é rejeitado</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT02 – Rejeitar item com nome em branco</b></td></tr>
+<tr><th>Pré-Condição</th><td>Projeto Testes.Unitarios referenciando o projeto TrabalhoPOO2; execução com dotnet test</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste cria uma ItemArma com nome formado só por espaços.</li><li>O construtor valida o nome.</li><li>O sistema lança ArgumentException.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Nome "   ", peso 2,0 kg, valor 10, dano "Corte", ataque +3</td></tr>
+<tr><th>Saída esperada</th><td>ArgumentException com a mensagem "Nome do item não pode ser vazio"</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Exceção lançada com a mensagem esperada. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT02</div><pre>  Aprovado CT02 - Item com nome em branco é rejeitado</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT03 – Rejeitar inventário com capacidade zero</b></td></tr>
+<tr><th>Pré-Condição</th><td>Projeto Testes.Unitarios referenciando o projeto TrabalhoPOO2; execução com dotnet test</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste cria um Inventario com capacidade 0.</li><li>O construtor valida a capacidade.</li><li>O sistema lança ArgumentException.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Capacidade máxima = 0 kg (valor-limite inválido)</td></tr>
+<tr><th>Saída esperada</th><td>ArgumentException com a mensagem "Capacidade deve ser maior que zero"</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Exceção lançada com a mensagem esperada. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT03</div><pre>  Aprovado CT03 - Inventário com capacidade zero é rejeitado</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT04 – Consumível perde carga e recusa uso sem cargas</b></td></tr>
+<tr><th>Pré-Condição</th><td>Projeto Testes.Unitarios referenciando o projeto TrabalhoPOO2; execução com dotnet test</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste cria uma "Poção Pequena" com 1 carga.</li><li>O teste chama Usar() duas vezes.</li><li>O sistema aceita o 1º uso e recusa o 2º.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Poção Pequena, 0,3 kg, valor 10, 1 carga</td></tr>
+<tr><th>Saída esperada</th><td>1º Usar() = true, 2º Usar() = false, Cargas = 0</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">true, false e Cargas = 0. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT04</div><pre>  Aprovado CT04 - Consumível perde a carga ao ser usado e recusa uso sem cargas</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT05 – Busca por raridade ignora maiúsculas/minúsculas</b></td></tr>
+<tr><th>Pré-Condição</th><td>Inventário de 50 kg com 3 itens: 2 "Raro" e 1 "Comum"</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste adiciona os 3 itens ao inventário.</li><li>O teste chama BuscarPorRaridade("raro") em minúsculas.</li><li>O sistema devolve os itens raros.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Poção Rara (Raro), Adaga (Comum), Elmo Rúnico (Raro); texto buscado "raro"</td></tr>
+<tr><th>Saída esperada</th><td>2 itens encontrados, todos com raridade "Raro"</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">2 itens raros encontrados. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Baixa</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT05</div><pre>  Aprovado CT05 - Busca por raridade ignora maiúsculas e minúsculas</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT06 – Mago nível 1 nasce com mana máxima de 83</b></td></tr>
+<tr><th>Pré-Condição</th><td>Projeto Testes.Unitarios referenciando o projeto TrabalhoPOO2; execução com dotnet test</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste cria um Mago pela MagoFactory.</li><li>O sistema calcula os atributos e a mana (Inteligência × 4 + Nível × 15).</li><li>O teste confere classe, inteligência e mana.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Nome "Merlin", raça Humano, alinhamento Neutro Bom, nível 1</td></tr>
+<tr><th>Saída esperada</th><td>Classe "Mago", Inteligência 17, ManaMaxima 83 e ManaAtual 83</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Valores conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT06</div><pre>  Aprovado CT06 - Mago nível 1 nasce com mana máxima de 83</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT07 – XP zero ou negativo é rejeitado</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Boromir" nível 1 com 0 XP</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste chama AdicionarExperiencia(0).</li><li>O teste chama AdicionarExperiencia(-50).</li><li>O sistema rejeita as duas chamadas sem alterar o personagem.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>XP = 0 e XP = -50 (valores-limite)</td></tr>
+<tr><th>Saída esperada</th><td>ArgumentException "XP deve ser positivo" nas duas chamadas; nível 1 e 0 XP</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Duas exceções com a mensagem esperada; personagem inalterado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT07</div><pre>  Aprovado CT07 - XP zero ou negativo é rejeitado e o personagem não muda</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT08 – 1000 XP de uma vez sobe vários níveis</b></td></tr>
+<tr><th>Pré-Condição</th><td>Bardo "Jaskier" nível 1 com 0 XP</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste chama AdicionarExperiencia(1000).</li><li>O sistema sobe de nível enquanto o XP alcança o limite (100, 150, 225, 337).</li><li>O teste confere nível, XP restante e próximo limite.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>1000 XP</td></tr>
+<tr><th>Saída esperada</th><td>Nível 5, Experiencia 188 e ExperienciaProximoNivel 506</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Nível 5, 188 XP e próximo limite 506. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT08</div><pre>  Aprovado CT08 - 1000 XP de uma vez sobe vários níveis (nível 5, sobra 188 XP)</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT09 – Subir para o nível 2 libera a habilidade "Pele Endurecida"</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Aragorn" nível 1 (sem a habilidade de nível 2)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste confere que "Pele Endurecida" ainda não foi aprendida.</li><li>O teste adiciona 100 XP.</li><li>O sistema sobe o Guerreiro para o nível 2.</li><li>O teste procura "Pele Endurecida" na lista de habilidades.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>100 XP (limite do nível 1)</td></tr>
+<tr><th>Saída esperada</th><td>Nível 2 e a lista de habilidades contém "Pele Endurecida"</td></tr>
+<tr><th>Saída encontrada</th><td class="falha">Nível 2, mas a habilidade não aparece: "Assert.Contains() Failure: Filter not matched in collection". Reprovado (DEF-01).</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT09</div><pre>  Com falha CT09 - Ao subir para o nível 2 o Guerreiro aprende 'Pele Endurecida'
+  Mensagem de erro:
+   Assert.Contains() Failure: Filter not matched in collection
+Collection:</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT10 – Usar munição com quantidade negativa é recusado</b></td></tr>
+<tr><th>Pré-Condição</th><td>20 flechas de 0,1 kg e valor 2 cada</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O teste cria a munição com 20 unidades.</li><li>O teste chama Usar(-5).</li><li>O sistema deve recusar e manter a quantidade.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Quantidade a usar = -5</td></tr>
+<tr><th>Saída esperada</th><td>Usar(-5) retorna false e a quantidade continua 20</td></tr>
+<tr><th>Saída encontrada</th><td class="falha">Antes da refatoração: retornou true e a quantidade subiu para 25 ("Assert.False() Failure – Expected: False, Actual: True"). Reprovado (DEF-02). Após a refatoração 2: aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste unitário – xUnit)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">dotnet test Testes.Unitarios – CT10</div><pre>  Com falha CT10 - Usar munição com quantidade negativa é recusado
+  Mensagem de erro:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+
+--- reteste após a refatoração 2 ---
+  Aprovado CT10 - Usar munição com quantidade negativa é recusado</pre></div></div>
+
+<h2 class="quebra">5.2 Testes funcionais automatizados – Selenium (CT11 a CT20)</h2>
+<p>Projeto <i>Testes.Selenium</i>: a suíte sobe a tela web do sistema, abre o Chrome e executa os 10 casos em ordem. Antes de cada caso a suíte zera os dados (/reset). Execução: <code>dotnet test Testes.Selenium</code>. O print de cada caso é salvo automaticamente em <i>evidencias/selenium</i>.</p>
+<div class="print"><div class="barra">dotnet test Testes.Selenium – suíte de testes funcionais</div><pre>  Aprovado CT11 - Criar personagem Mago válido
+  Aprovado CT12 - Criar personagem sem raça mostra erro
+  Aprovado CT13 - Nível 100 (limite superior) é aceito
+  Aprovado CT14 - Bardo recebe os itens iniciais da classe
+  Aprovado CT15 - Adicionar munição calcula peso e valor pela quantidade
+  Aprovado CT16 - Buscar item por tipo 'Arma'
+  Aprovado CT17 - Ordenar inventário por nome (A-Z)
+  Aprovado CT18 - Equipar armadura aumenta a vida máxima (55 para 70)
+  Aprovado CT19 - Adicionar 0 XP mostra erro
+  Com falha CT20 - Ao subir para o nível 2 a habilidade 'Escudo Arcano' é liberada
+Total de testes: 10
+     Aprovados: 9
+     Com falha: 1</pre></div>
+<div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT11 – Criar personagem Mago válido</b></td></tr>
+<tr><th>Pré-Condição</th><td>Site aberto e sem personagens cadastrados (a suíte acessa /reset antes de cada teste)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator preenche nome, raça, alinhamento e nível.</li><li>O ator escolhe a classe Mago.</li><li>O ator clica em "Criar".</li><li>O sistema cria o personagem, mostra a ficha e o nome na lista.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Merlin; Humano; Neutro Bom; nível 1; Mago</td></tr>
+<tr><th>Saída esperada</th><td>Mensagem "Personagem Merlin criado com sucesso!", lista com "Merlin - Mago Nível 1 (Humano)" e ficha aberta</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT11.png" alt="Print CT11"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT12 – Criar personagem sem raça</b></td></tr>
+<tr><th>Pré-Condição</th><td>Site aberto e sem personagens cadastrados (a suíte acessa /reset antes de cada teste)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator preenche nome, alinhamento e nível, deixando a raça vazia.</li><li>O ator clica em "Criar".</li><li>O sistema valida os dados e mostra o erro.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Legolas; raça vazia; Caótico Bom; nível 1; Guerreiro</td></tr>
+<tr><th>Saída esperada</th><td>Mensagem "Raça não pode ser vazia" e 0 personagens cadastrados</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Erro exibido e nenhum personagem criado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT12.png" alt="Print CT12"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT13 – Nível 100 (limite superior) é aceito</b></td></tr>
+<tr><th>Pré-Condição</th><td>Site aberto e sem personagens cadastrados (a suíte acessa /reset antes de cada teste)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator preenche os dados com nível 100.</li><li>O ator escolhe Druida e clica em "Criar".</li><li>O sistema cria o personagem no nível 100.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Elrond; Elfo; Neutro Bom; nível 100; Druida</td></tr>
+<tr><th>Saída esperada</th><td>Personagem criado e ficha com nível 100</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Criado no nível 100. Aprovado. Observação: a ficha mostra "XP: 0 / -2147483648" (DEF-03).</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT13.png" alt="Print CT13"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT14 – Bardo recebe os itens iniciais da classe</b></td></tr>
+<tr><th>Pré-Condição</th><td>Site aberto e sem personagens cadastrados (a suíte acessa /reset antes de cada teste)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator cria um Bardo.</li><li>O sistema adiciona os itens iniciais da classe.</li><li>O ator confere a tabela do inventário.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Jaskier; Humano; Caótico Bom; nível 1; Bardo</td></tr>
+<tr><th>Saída esperada</th><td>Inventário com "Alaúde" e "Pó de Fada" (2 itens)</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Alaúde e Pó de Fada, 2 itens. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT14.png" alt="Print CT14"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT15 – Adicionar munição calcula peso e valor pela quantidade</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Robin" criado e selecionado</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe o tipo Munição.</li><li>O ator informa nome, peso e valor unitários, tipo e quantidade.</li><li>O ator clica em "Adicionar".</li><li>O sistema adiciona o item com peso e valor totais.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Virotes; 0,1 kg; valor 2; raridade Comum; tipo Virote; quantidade 20</td></tr>
+<tr><th>Saída esperada</th><td>"Item adicionado com sucesso!" e linha "Virotes" com 2,0 kg e valor 40,00</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Item na tabela com 2,0 kg e 40,00. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT15.png" alt="Print CT15"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT16 – Buscar item por tipo "Arma"</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Conan" com os 3 itens iniciais</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe buscar por Tipo.</li><li>O ator digita "Arma" e clica em "Buscar".</li><li>O sistema lista os itens encontrados.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Campo: Tipo; texto: Arma</td></tr>
+<tr><th>Saída esperada</th><td>1 resultado: "Espada Longa (Arma)"</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">1 resultado, Espada Longa. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT16.png" alt="Print CT16"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT17 – Ordenar inventário por nome (A-Z)</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Xena" com os 3 itens iniciais</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe a ordenação "Nome (A-Z)".</li><li>O ator clica em "Ordenar".</li><li>O sistema reordena a tabela.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Ordem: nome</td></tr>
+<tr><th>Saída esperada</th><td>"Inventário ordenado!" e a ordem Armadura de Couro, Espada Longa, Poção de Cura</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Ordem conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Baixa</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT17.png" alt="Print CT17"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT18 – Equipar armadura aumenta a vida máxima</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Brienne" nível 1 com vida máxima 55</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe "Armadura de Couro" na lista de equipáveis.</li><li>O ator clica em "Equipar".</li><li>O sistema equipa no slot Torso e recalcula a vida (defesa × 5).</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Armadura de Couro (slot Torso, defesa +3)</td></tr>
+<tr><th>Saída esperada</th><td>"Armadura de Couro equipado no slot Torso", vida máxima 70 e "Torso: Armadura de Couro"</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Vida foi de 55 para 70 e o item aparece no slot Torso. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT18.png" alt="Print CT18"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT19 – Adicionar 0 XP mostra erro</b></td></tr>
+<tr><th>Pré-Condição</th><td>Bardo "Frodo" nível 1 com 0 XP</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator digita 0 no campo XP.</li><li>O ator clica em "Adicionar XP".</li><li>O sistema recusa o valor.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>XP = 0</td></tr>
+<tr><th>Saída esperada</th><td>Mensagem "XP deve ser positivo"; continua nível 1 com 0 XP</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT19.png" alt="Print CT19"></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT20 – Subir para o nível 2 libera "Escudo Arcano"</b></td></tr>
+<tr><th>Pré-Condição</th><td>Mago "Gandalf" nível 1</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator digita 100 no campo XP.</li><li>O ator clica em "Adicionar XP".</li><li>O sistema sobe o Mago para o nível 2.</li><li>O ator confere a lista de habilidades.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>100 XP</td></tr>
+<tr><th>Saída esperada</th><td>Nível 2 e a lista de habilidades contém "Escudo Arcano"</td></tr>
+<tr><th>Saída encontrada</th><td class="falha">Nível 2, mas a lista mostra só Conjuração Elemental e Recuperação Arcana. Reprovado (DEF-01).</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Automatizada (teste funcional – Selenium WebDriver)</td></tr>
+</table><p class="rot">Print do resultado:</p><img class="tela" src="../evidencias/selenium/CT20.png" alt="Print CT20"></div>
+
+<h2 class="quebra">5.3 Testes funcionais manuais (CT21 a CT30)</h2>
+<p>Executados no sistema de console original (<code>dotnet run --project TrabalhoPOO2</code>), digitando as entradas de cada procedimento. Cada execução começa sem personagens cadastrados. Os prints mostram a tela do console com o que foi digitado; a saída completa de cada caso está em <i>evidencias/manuais</i>.</p>
+<div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT21 – Criar personagem Druida com todos os dados</b></td></tr>
+<tr><th>Pré-Condição</th><td>Sistema aberto com dotnet run, no menu principal, sem arquivo personagens.json</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 1 (Criar novo personagem).</li><li>O ator informa nome, raça, alinhamento, nível e a classe 3 (Druida).</li><li>O sistema cria o personagem.</li><li>O ator informa altura, peso, cabelo, olhos, nascimento e história.</li><li>O sistema adiciona os itens iniciais e seleciona o personagem.</li><li>O ator escolhe 5 (Gerenciar inventário) e 1 (Exibir inventário).</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Radagast; Humano; Neutro Bom; 1; 3 (Druida); 1,75; 70; Castanho; Verdes; 15/03/1995; "Guardião da floresta"</td></tr>
+<tr><th>Saída esperada</th><td>"Personagem 'Radagast' criado e selecionado como atual!" e inventário com Foice Natural e Sementes Mágicas (2 itens)</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado. Observação: no cadastro aparece "❌ Requer nível 2 (atual: 1)" (ligado ao DEF-01).</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT21 (1/2)</div><pre>Nome: Radagast
+Raça: Humano
+Alinhamento (ex: Leal Bom, Neutro Mau): Neutro Bom
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 3
+✅ Habilidade 'Benção Elemental' aprendida!
+✅ Habilidade 'Druidico' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Radagast criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,75
+Peso (kg): 70
+Cor do cabelo: Castanho
+Cor dos olhos: Verdes
+Data de nascimento (dd/mm/aaaa): 15/03/1995
+História/background (opcional): Guardião da floresta
+✅ Foice Natural adicionado ao inventário
+✅ Sementes Mágicas adicionado ao inventário
+
+✅ Personagem 'Radagast' criado e selecionado como atual!</pre></div><div class="print"><div class="barra">Console – CT21 (2/2)</div><pre>=== INVENTÁRIO ===
+Peso: 2,8/60,0 kg
+Itens: 2
+Valor total: R$ 60,00
+==================
+
+ARMA:
+  Foice Natural [Comum]
+    Tipo: Arma
+    Peso: 2,5 kg
+    Valor: R$ 45,00
+    Slot: Arma
+    Ataque: +6
+    Tipo de Dano: Corte
+    Alcance: 1
+
+CONSUMÍVEL:
+  Sementes Mágicas [Comum]
+    Tipo: Consumível
+    Peso: 0,3 kg
+    Valor: R$ 15,00</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT22 – Recusar classe inexistente</b></td></tr>
+<tr><th>Pré-Condição</th><td>Sistema aberto com dotnet run, no menu principal, sem arquivo personagens.json</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 1.</li><li>O ator informa os dados e a classe 9.</li><li>O sistema valida a classe e mostra o erro.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Legolas; Elfo; Caótico Bom; 1; classe 9</td></tr>
+<tr><th>Saída esperada</th><td>"❌ Erro: Classe inválida" e o contador continua em 0</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT22 (1/1)</div><pre>👤 CRIAR NOVO PERSONAGEM
+
+Nome: Legolas
+Raça: Elfo
+Alinhamento (ex: Leal Bom, Neutro Mau): Caótico Bom
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 9
+
+❌ Erro: Classe inválida
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT23 – Texto no lugar do número no menu principal</b></td></tr>
+<tr><th>Pré-Condição</th><td>Sistema aberto com dotnet run, no menu principal, sem arquivo personagens.json</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator digita "abc" no menu principal.</li><li>O sistema tenta converter a opção.</li><li>O sistema mostra o erro e volta ao menu.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Opção: abc</td></tr>
+<tr><th>Saída esperada</th><td>"❌ Opção inválida! Digite um número." e retorno ao menu principal</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Baixa</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT23 (1/1)</div><pre>📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: abc
+
+❌ Opção inválida! Digite um número.
+
+⏎ Pressione ENTER para continuar...</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT24 – Selecionar personagem com número inexistente</b></td></tr>
+<tr><th>Pré-Condição</th><td>Um personagem cadastrado (Dandelion, Bardo)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 3 (Selecionar personagem atual).</li><li>O sistema lista os personagens.</li><li>O ator digita 5.</li><li>O sistema recusa o número.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Número do personagem: 5 (só existe o 1)</td></tr>
+<tr><th>Saída esperada</th><td>"❌ Número inválido!" e o personagem atual continua Dandelion</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT24 (1/1)</div><pre>🔍 SELECIONAR PERSONAGEM
+
+1. Dandelion - Bardo Nível 1
+
+➡️  Escolha o número do personagem: 5
+
+❌ Número inválido!
+
+⏎ Pressione ENTER para continuar...</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT25 – Editar características do personagem</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Boromir" criado e selecionado</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 4 (Gerenciar personagem) e 5 (Editar características).</li><li>O ator informa os novos dados.</li><li>O sistema confirma a alteração.</li><li>O ator escolhe 1 (Exibir status completo).</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Altura 1,90; peso 95; cabelo Grisalho; olhos Cinzentos; história "Veterano de guerra"</td></tr>
+<tr><th>Saída esperada</th><td>"✅ Características atualizadas!" e status com 1,90 m, 95,0 kg, Grisalho, Cinzentos e a história</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT25 (1/2)</div><pre>📝 EDITAR CARACTERÍSTICAS:
+Nova altura (m): 1,90
+Novo peso (kg): 95
+Nova cor do cabelo: Grisalho
+Nova cor dos olhos: Cinzentos
+Nova história/background: Veterano de guerra
+
+✅ Características atualizadas!
+
+⏎ Pressione ENTER para continuar...</pre></div><div class="print"><div class="barra">Console – CT25 (2/2)</div><pre>👤 Boromir - Guerreiro 1
+🏹 Humano | Leal Bom | 28 anos
+--------------------------------------------------
+❤️  STATUS:
+  Vida: 55/55
+  Mana: 14/14
+  XP: 0/100 (0,0%)
+
+📊 ATRIBUTOS:
+  Força: 17 | Destreza: 13
+  Constituição: 15 | Inteligência: 9
+  Sabedoria: 11 | Carisma: 11
+
+📏 CARACTERÍSTICAS:
+  Altura: 1,90m | Peso: 95,0kg
+  Cabelo: Grisalho | Olhos: Cinzentos
+
+📖 HISTÓRIA:
+  Veterano de guerra
+
+⏎ Pressione ENTER para continuar...</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT26 – Buscar itens por raridade "Raro"</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreiro "Eowyn" selecionada e itens de exemplo criados (opção 8)</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 5 (Gerenciar inventário) e 8 (Criar itens de exemplo).</li><li>O ator escolhe 4 (Buscar item) e 3 (Por raridade).</li><li>O ator digita "Raro".</li><li>O sistema lista os itens encontrados.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Raridade: Raro</td></tr>
+<tr><th>Saída esperada</th><td>"🔎 Resultados: 1 item(s) encontrado(s)" com a Poção de Cura Maior</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Baixa</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT26 (1/1)</div><pre>🔍 BUSCAR ITEM:
+1. Por nome
+2. Por tipo
+3. Por raridade
+Opção: 3
+Raridade: Raro
+
+🔎 Resultados: 1 item(s) encontrado(s)
+  Poção de Cura Maior [Raro]
+    Tipo: Consumível
+    Peso: 0,5 kg
+    Valor: R$ 50,00
+    Efeito: Restaura 50 HP
+    Cargas: 2
+
+⏎ Pressione ENTER para continuar...</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT27 – Gerenciar sem personagem selecionado</b></td></tr>
+<tr><th>Pré-Condição</th><td>Sistema aberto com dotnet run, no menu principal, sem arquivo personagens.json</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 4 (Gerenciar personagem atual).</li><li>O ator escolhe 5 (Gerenciar inventário).</li><li>O sistema deveria avisar que não há personagem selecionado.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Opções 4 e 5 sem nenhum personagem</td></tr>
+<tr><th>Saída esperada</th><td>Mensagem avisando que é preciso criar ou selecionar um personagem</td></tr>
+<tr><th>Saída encontrada</th><td class="falha">Nenhuma mensagem: o menu principal é redesenhado sem retorno ao usuário. Reprovado (DEF-04).</td></tr>
+<tr><th>Prioridade</th><td>Média</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT27 (1/1)</div><pre>➡️  Escolha uma opção: 4
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 0
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 5</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT28 – Texto inválido dentro do menu de inventário</b></td></tr>
+<tr><th>Pré-Condição</th><td>Guerreira "Tauriel" criada e selecionada</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 5 (Gerenciar inventário).</li><li>O ator digita "x".</li><li>O sistema deveria avisar e continuar no menu de inventário.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Opção: x</td></tr>
+<tr><th>Saída esperada</th><td>Mensagem de opção inválida e o menu de inventário exibido de novo</td></tr>
+<tr><th>Saída encontrada</th><td class="falha">Mostrou "❌ Opção inválida! Digite um número." mas voltou para o MENU PRINCIPAL. Reprovado (DEF-05).</td></tr>
+<tr><th>Prioridade</th><td>Baixa</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT28 (1/1)</div><pre>➡️  Escolha uma opção: x
+
+❌ Opção inválida! Digite um número.
+
+⏎ Pressione ENTER para continuar...
+
+╔══════════════════════════════════════════════════════════╗
+║         SISTEMA DE GERENCIAMENTO DE PERSONAGENS RPG     ║
+╚══════════════════════════════════════════════════════════╝
+Personagens cadastrados: 1
+Personagem atual: Tauriel
+
+📋 MENU PRINCIPAL:
+1. 👤 Criar novo personagem
+2. 📋 Listar todos os personagens
+3. 🔍 Selecionar personagem atual
+4. 🛠️  Gerenciar personagem atual
+5. 🎒 Gerenciar inventário
+6. 💾 Salvar personagens
+7. 📂 Carregar personagens
+0. 🚪 Sair
+
+➡️  Escolha uma opção: 0</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT29 – Data de nascimento inválida no cadastro</b></td></tr>
+<tr><th>Pré-Condição</th><td>Sistema aberto com dotnet run, no menu principal, sem arquivo personagens.json</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 1 e informa os dados básicos (Guerreiro).</li><li>O ator informa a data 31/02/1990.</li><li>O sistema recusa a data.</li><li>O ator escolhe 2 (Listar personagens).</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Gimli; Anão; Leal Neutro; 1; 1 (Guerreiro); 1,40; 90; Ruivo; Castanhos; 31/02/1990</td></tr>
+<tr><th>Saída esperada</th><td>Cadastro recusado: nenhum personagem pela metade na lista (0 cadastrados)</td></tr>
+<tr><th>Saída encontrada</th><td class="falha">Erro "String '31/02/1990' was not recognized as a valid DateTime.", porém Gimli ficou na lista ("Personagens cadastrados: 1") sem itens e sem ser selecionado. Reprovado (DEF-06). Reteste após a refatoração 1: cadastro cancelado e 0 personagens. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Alta</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT29 (1/2)</div><pre>Nome: Gimli
+Raça: Anão
+Alinhamento (ex: Leal Bom, Neutro Mau): Leal Neutro
+Nível inicial (1-100): 1
+
+🎭 Escolha a classe:
+1. 🛡️  Guerreiro
+2. 🔮 Mago
+3. 🌿 Druida
+4. 🎵 Bardo
+Opção: 1
+✅ Habilidade 'Golpe Poderoso' aprendida!
+✅ Habilidade 'Recuperar Folego' aprendida!
+❌ Requer nível 2 (atual: 1)
+✅ Personagem Gimli criado com sucesso!
+
+📝 Configuração adicional:
+Altura (m): 1,40
+Peso (kg): 90
+Cor do cabelo: Ruivo
+Cor dos olhos: Castanhos
+Data de nascimento (dd/mm/aaaa): 31/02/1990
+
+❌ Erro: String '31/02/1990' was not recognized as a valid DateTime.
+
+⏎ Pressione ENTER para continuar...</pre></div><div class="print"><div class="barra">Console – CT29 (2/2)</div><pre>📋 LISTA DE PERSONAGENS
+
+1. Gimli - Guerreiro Nível 1 (Anão)
+
+⏎ Pressione ENTER para continuar...</pre></div><div class="print"><div class="barra">Console – CT29 reteste após a refatoração 1</div><pre>Data de nascimento (dd/mm/aaaa): 31/02/1990
+
+↩️ Cadastro cancelado: dados adicionais inválidos.
+
+❌ Erro: String '31/02/1990' was not recognized as a valid DateTime.
+
+⏎ Pressione ENTER para continuar...
+...
+📋 LISTA DE PERSONAGENS
+
+Nenhum personagem cadastrado.
+
+⏎ Pressione ENTER para continuar...</pre></div></div><div class="caso"><table class="ct">
+<tr><th>Caso de Teste</th><td><b>CT30 – Desequipar sem nenhum item equipado</b></td></tr>
+<tr><th>Pré-Condição</th><td>Mago "Saruman" criado, sem itens equipados</td></tr>
+<tr><th>Procedimento</th><td><ol><li>O ator escolhe 5 (Gerenciar inventário).</li><li>O ator escolhe 6 (Desequipar item).</li><li>O sistema verifica os slots.</li></ol></td></tr>
+<tr><th>Dados de entrada</th><td>Nenhum slot com item</td></tr>
+<tr><th>Saída esperada</th><td>"❌ Nenhum item equipado."</td></tr>
+<tr><th>Saída encontrada</th><td class="ok">Conforme o esperado. Aprovado.</td></tr>
+<tr><th>Prioridade</th><td>Baixa</td></tr>
+<tr><th>Técnica</th><td>Manual (console, com print da tela)</td></tr>
+</table><p class="rot">Print do resultado:</p><div class="print"><div class="barra">Console – CT30 (1/1)</div><pre>📦 DESEQUIPAR ITEM:
+❌ Nenhum item equipado.
+
+⏎ Pressione ENTER para continuar...</pre></div></div>
+
+<h1 class="quebra">6. Refatoração de 2 métodos</h1>
+<table><tr><th>Método</th><th>Problema identificado</th><th>Melhoria aplicada</th></tr>
+<tr><td>Menu.CriarPersonagem</td><td>Método longo (≈ 75 linhas) que lê dados, escolhe a classe, cria o personagem e configura as características num bloco só. Se a configuração adicional falha, o personagem já foi cadastrado e fica pela metade (DEF-06).</td><td>Dividido em LerDadosBasicos, EscolherClasse, ConcluirCadastro e LerCaracteristicas, cada um com uma responsabilidade. O ConcluirCadastro desfaz o cadastro quando a configuração falha. Corrige o DEF-06 (reteste do CT29 aprovado).</td></tr>
+<tr><td>ItemMunicao.Usar</td><td>Aceitava quantidade negativa ou zero (DEF-02) e recalculava peso e valor com uma fórmula difícil de ler, dividindo pela quantidade antiga.</td><td>Validação extraída para QuantidadeValida (quantidade &gt; 0 e ≤ estoque) e cálculo extraído para RecalcularPesoEValor, usando peso e valor unitários guardados no construtor. Corrige o DEF-02 (reteste do CT10 aprovado).</td></tr></table>
+
+<h2>6.1 Menu.CriarPersonagem</h2>
+<p class="rot">Print antes:</p><div class="print codigo"><div class="barra">Program.cs – ANTES (commit 5b63674)</div><pre>private void CriarPersonagem()
+{
+    Console.Clear();
+    ExibirCabecalho();
+    Console.WriteLine("👤 CRIAR NOVO PERSONAGEM\n");
+    
+    try
+    {
+        Console.Write("Nome: ");
+        string nome = Console.ReadLine();
+        
+        Console.Write("Raça: ");
+        string raca = Console.ReadLine();
+        
+        Console.Write("Alinhamento (ex: Leal Bom, Neutro Mau): ");
+        string alinhamento = Console.ReadLine();
+        
+        Console.Write("Nível inicial (1-100): ");
+        int nivel = int.Parse(Console.ReadLine());
+        
+        Console.WriteLine("\n🎭 Escolha a classe:");
+        Console.WriteLine("1. 🛡️  Guerreiro");
+        Console.WriteLine("2. 🔮 Mago");
+        Console.WriteLine("3. 🌿 Druida");
+        Console.WriteLine("4. 🎵 Bardo");
+        Console.Write("Opção: ");
+        
+        int classeOpcao = int.Parse(Console.ReadLine());
+        PersonagemFactory factory = classeOpcao switch
+        {
+            1 =&gt; new GuerreiroFactory(),
+            2 =&gt; new MagoFactory(),
+            3 =&gt; new DruidaFactory(),
+            4 =&gt; new BardoFactory(),
+            _ =&gt; throw new PersonagemException("Classe inválida")
+        };
+        
+        var personagem = gerenciador.CriarPersonagem(factory, nome, raca, alinhamento, nivel);
+        if (personagem != null)
+        {
+            // Configurar características adicionais
+            Console.WriteLine("\n📝 Configuração adicional:");
+            
+            Console.Write("Altura (m): ");
+            personagem.Altura = double.Parse(Console.ReadLine());
+            
+            Console.Write("Peso (kg): ");
+            personagem.Peso = double.Parse(Console.ReadLine());
+            
+            Console.Write("Cor do cabelo: ");
+            personagem.CorCabelo = Console.ReadLine();
+            
+            Console.Write("Cor dos olhos: ");
+            personagem.CorOlhos = Console.ReadLine();
+            
+            Console.Write("Data de nascimento (dd/mm/aaaa): ");
+            personagem.DataNascimento = DateTime.Parse(Console.ReadLine());
+            
+            Console.Write("História/background (opcional): ");
+            personagem.Historia = Console.ReadLine();
+            
+            // Adicionar itens iniciais
+            AdicionarItensIniciais(personagem);
+            
+            gerenciador.PersonagemAtual = personagem;
+            Console.WriteLine($"\n✅ Personagem '{nome}' criado e selecionado como atual!");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"\n❌ Erro: {ex.Message}");
+    }
+    
+    Aguardar();
+}</pre></div>
+<p class="rot">Print depois:</p><div class="print codigo"><div class="barra">Program.cs – DEPOIS (commit da refatoração)</div><pre>private void CriarPersonagem()
+{
+    Console.Clear();
+    ExibirCabecalho();
+    Console.WriteLine("👤 CRIAR NOVO PERSONAGEM\n");
+    
+    try
+    {
+        var (nome, raca, alinhamento, nivel) = LerDadosBasicos();
+        PersonagemFactory factory = EscolherClasse();
+
+        var personagem = gerenciador.CriarPersonagem(factory, nome, raca, alinhamento, nivel);
+        if (personagem != null)
+            ConcluirCadastro(personagem);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"\n❌ Erro: {ex.Message}");
+    }
+
+    Aguardar();
+}
+
+private (string nome, string raca, string alinhamento, int nivel) LerDadosBasicos()
+{
+    Console.Write("Nome: ");
+    string nome = Console.ReadLine();
+
+    Console.Write("Raça: ");
+    string raca = Console.ReadLine();
+
+    Console.Write("Alinhamento (ex: Leal Bom, Neutro Mau): ");
+    string alinhamento = Console.ReadLine();
+
+    Console.Write("Nível inicial (1-100): ");
+    int nivel = int.Parse(Console.ReadLine());
+
+    return (nome, raca, alinhamento, nivel);
+}
+
+private PersonagemFactory EscolherClasse()
+{
+    Console.WriteLine("\n🎭 Escolha a classe:");
+    Console.WriteLine("1. 🛡️  Guerreiro");
+    Console.WriteLine("2. 🔮 Mago");
+    Console.WriteLine("3. 🌿 Druida");
+    Console.WriteLine("4. 🎵 Bardo");
+    Console.Write("Opção: ");
+
+    return int.Parse(Console.ReadLine()) switch
+    {
+        1 =&gt; new GuerreiroFactory(),
+        2 =&gt; new MagoFactory(),
+        3 =&gt; new DruidaFactory(),
+        4 =&gt; new BardoFactory(),
+        _ =&gt; throw new PersonagemException("Classe inválida")
+    };
+}
+
+private void ConcluirCadastro(Personagem personagem)
+{
+    try
+    {
+        LerCaracteristicas(personagem);
+    }
+    catch
+    {
+        gerenciador.Personagens.Remove(personagem);
+        Console.WriteLine("\n↩️ Cadastro cancelado: dados adicionais inválidos.");
+        throw;
+    }
+
+    AdicionarItensIniciais(personagem);
+    gerenciador.PersonagemAtual = personagem;
+    Console.WriteLine($"\n✅ Personagem '{personagem.Nome}' criado e selecionado como atual!");
+}
+
+private void LerCaracteristicas(Personagem personagem)
+{
+    Console.WriteLine("\n📝 Configuração adicional:");
+
+    Console.Write("Altura (m): ");
+    personagem.Altura = double.Parse(Console.ReadLine());
+
+    Console.Write("Peso (kg): ");
+    personagem.Peso = double.Parse(Console.ReadLine());
+
+    Console.Write("Cor do cabelo: ");
+    personagem.CorCabelo = Console.ReadLine();
+
+    Console.Write("Cor dos olhos: ");
+    personagem.CorOlhos = Console.ReadLine();
+
+    Console.Write("Data de nascimento (dd/mm/aaaa): ");
+    personagem.DataNascimento = DateTime.Parse(Console.ReadLine());
+
+    Console.Write("História/background (opcional): ");
+    personagem.Historia = Console.ReadLine();
+}</pre></div>
+
+<h2 class="quebra">6.2 ItemMunicao.Usar</h2>
+<p class="rot">Print antes:</p><div class="print codigo"><div class="barra">Program.cs – ANTES</div><pre>public ItemMunicao(string nome, double pesoUnitario, decimal valorUnitario, 
+                  int quantidade, string tipo, string raridade = "Comum")
+    : base(nome, pesoUnitario * quantidade, valorUnitario * quantidade, "Munição", raridade)
+{
+    Quantidade = quantidade;
+    Tipo = tipo;
+}
+
+public bool Usar(int quantidade = 1)
+{
+    if (Quantidade &gt;= quantidade)
+    {
+        Quantidade -= quantidade;
+        Peso -= (Peso / (Quantidade + quantidade)) * quantidade;
+        Valor -= (Valor / (Quantidade + quantidade)) * quantidade;
+        return true;
+    }
+    return false;
+}</pre></div>
+<p class="rot">Print depois:</p><div class="print codigo"><div class="barra">Program.cs – DEPOIS</div><pre>public ItemMunicao(string nome, double pesoUnitario, decimal valorUnitario,
+                  int quantidade, string tipo, string raridade = "Comum")
+    : base(nome, pesoUnitario * quantidade, valorUnitario * quantidade, "Munição", raridade)
+{
+    PesoUnitario = pesoUnitario;
+    ValorUnitario = valorUnitario;
+    Quantidade = quantidade;
+    Tipo = tipo;
+}
+
+public bool Usar(int quantidade = 1)
+{
+    if (!QuantidadeValida(quantidade))
+        return false;
+
+    Quantidade -= quantidade;
+    RecalcularPesoEValor();
+    return true;
+}
+
+private bool QuantidadeValida(int quantidade) =&gt; quantidade &gt; 0 &amp;&amp; quantidade &lt;= Quantidade;
+
+private void RecalcularPesoEValor()
+{
+    Peso = PesoUnitario * Quantidade;
+    Valor = ValorUnitario * Quantidade;
+}</pre></div>
+<p class="rot">Reteste dos testes unitários após as refatorações:</p>
+<div class="print"><div class="barra">dotnet test Testes.Unitarios – depois da refatoração</div><pre>  Aprovado CT01 - Item com valor negativo é rejeitado
+  Aprovado CT02 - Item com nome em branco é rejeitado
+  Aprovado CT03 - Inventário com capacidade zero é rejeitado
+  Aprovado CT04 - Consumível perde a carga ao ser usado e recusa uso sem cargas
+  Aprovado CT05 - Busca por raridade ignora maiúsculas e minúsculas
+  Aprovado CT06 - Mago nível 1 nasce com mana máxima de 83
+  Aprovado CT07 - XP zero ou negativo é rejeitado e o personagem não muda
+  Aprovado CT08 - 1000 XP de uma vez sobe vários níveis (nível 5, sobra 188 XP)
+  Com falha CT09 - Ao subir para o nível 2 o Guerreiro aprende 'Pele Endurecida'
+  Aprovado CT10 - Usar munição com quantidade negativa é recusado
+Total de testes: 10
+     Aprovados: 9
+     Com falha: 1</pre></div>
+
+<h1 class="quebra">7. Relatório de defeitos</h1>
+<table><tr><th>ID</th><th>Defeito</th><th>Casos</th><th>Gravidade</th><th>Situação</th><th>Proposta de solução</th></tr>
+<tr><td>DEF-01</td><td>Habilidades de nível superior nunca são liberadas. O construtor tenta adicionar a habilidade de nível 2 no nível 1 (mostra "❌ Requer nível 2") e o SubirNivel não tenta de novo, então o personagem nunca aprende a habilidade.</td><td>CT09, CT20, CT21</td><td>Alta</td><td>Aberto</td><td>Guardar a lista de habilidades da classe e criar um método LiberarHabilidades() que adiciona as que têm NivelRequerido ≤ Nivel e ainda não foram aprendidas. Chamar no construtor (sem mensagem de erro) e no SubirNivel.</td></tr><tr><td>DEF-02</td><td>ItemMunicao.Usar aceita quantidade negativa ou zero: Usar(-5) retorna true e a quantidade, o peso e o valor AUMENTAM.</td><td>CT10</td><td>Média</td><td>Corrigido (refatoração 2, reteste aprovado)</td><td>Validar quantidade &gt; 0 e ≤ estoque; guardar peso e valor unitários e recalcular peso/valor a partir deles.</td></tr><tr><td>DEF-03</td><td>Em níveis altos o XP para o próximo nível estoura o tipo int: no nível 100 a ficha mostra "XP: 0 / -2147483648".</td><td>CT13</td><td>Média</td><td>Aberto</td><td>Calcular com long/double e limitar o valor; no nível máximo (100) exibir "nível máximo" em vez do próximo limite.</td></tr><tr><td>DEF-04</td><td>Opções 4 e 5 do menu principal sem personagem selecionado não dão nenhum retorno ao usuário.</td><td>CT27</td><td>Baixa</td><td>Aberto</td><td>No ProcessarOpcaoPrincipal, quando PersonagemAtual for null, exibir "Nenhum personagem selecionado. Crie (1) ou selecione (3) um personagem." e aguardar ENTER.</td></tr><tr><td>DEF-05</td><td>Digitar texto em um submenu (inventário ou gerenciar personagem) gera FormatException que só é tratada no menu principal: o usuário é jogado de volta ao menu principal.</td><td>CT28</td><td>Baixa</td><td>Aberto</td><td>Reutilizar um método LerOpcao com int.TryParse em todos os submenus e repetir o submenu quando a entrada for inválida.</td></tr><tr><td>DEF-06</td><td>Data de nascimento (ou altura/peso) inválida no cadastro deixa o personagem "pela metade": ele fica na lista, sem itens iniciais e sem ser selecionado.</td><td>CT29</td><td>Alta</td><td>Corrigido (refatoração 1, reteste aprovado)</td><td>Dividir o CriarPersonagem em etapas e desfazer o cadastro (remover da lista) quando a configuração adicional falhar.</td></tr></table>
+
+<h1>8. Execução, repositório e vídeo</h1>
+<table><tr><th style="width:28%">Repositório dos testes</th><td>[link do seu repositório no GitHub]</td></tr>
+<tr><th>Sistema base (TI)</th><td>https://github.com/ThiagoBotelho12/TrabalhoPOO2</td></tr>
+<tr><th>Vídeo narrativo</th><td>Arquivo .mp4 enviado junto com este plano na entrega do Canvas</td></tr>
+<tr><th>Testes unitários</th><td><code>dotnet test Testes.Unitarios</code></td></tr>
+<tr><th>Testes Selenium</th><td><code>dotnet test Testes.Selenium</code> (o Chrome abre sozinho; <code>SELENIUM_PAUSA_MS=1500</code> deixa mais lento para o vídeo)</td></tr>
+<tr><th>Testes manuais</th><td><code>dotnet run --project TrabalhoPOO2</code> e seguir o procedimento de cada caso</td></tr></table>
+</body></html>
