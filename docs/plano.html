@@ -2,8 +2,8 @@
 <style>
 @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
 body { font-family: Arial, Helvetica, sans-serif; font-size: 10.5pt; color: #111; line-height: 1.35; }
-h1 { font-size: 16pt; margin: 18px 0 8px; border-bottom: 2px solid #1f3864; padding-bottom: 3px; color: #1f3864; }
-h2 { font-size: 12.5pt; margin: 14px 0 6px; color: #1f3864; }
+h1 { font-size: 15pt; margin: 18px 0 8px; border-bottom: 1.5px solid #000; padding-bottom: 3px; color: #000; } h1:not(.quebra):first-of-type{} 
+h2 { font-size: 12pt; margin: 14px 0 6px; color: #000; font-variant: small-caps; }
 h3 { font-size: 11pt; margin: 10px 0 4px; }
 .capa { height: 250mm; display: flex; flex-direction: column; justify-content: space-between; text-align: center; page-break-after: always; }
 .capa .topo { font-size: 13pt; font-weight: bold; } .capa .meio h1 { border: 0; font-size: 22pt; } .capa .meio p { font-size: 14pt; margin: 6px 0; }
@@ -25,9 +25,9 @@ img.tela { width: 100%; border: 1px solid #888; }
 </style></head><body>
 
 <div class="capa">
-  <div class="topo">Pontifícia Universidade Católica de Minas Gerais<br>Sistemas de Informação<br>Teste e Manutenção de Software</div>
-  <div class="meio"><p>Sistema de Gerenciamento de Personagens de RPG (TrabalhoPOO2)</p><h1>Plano do Projeto de Testes</h1><p>Versão: 1.0</p></div>
-  <div class="topo" style="font-weight:normal">Integrantes: <b>Bernardo Reis, Carlos Diniz, Davi Mendoza e Luan Santos</b><br>Betim, 17/11/2026</div>
+  <div class="topo"><img src="image1.png" style="width:130px"><br><br>PUC Minas<br><span style="font-weight:normal;font-size:11pt">Sistemas de Informação – Teste e Manutenção de Software</span></div>
+  <div class="meio"><h1 style="font-size:28pt;color:#000;border:0">Sistema de Gerenciamento de Personagens de RPG</h1><hr style="border:0;border-top:1.5px solid #000;margin:30px 0 12px"><p style="font-size:17pt">Plano do Projeto de Testes</p><p>Versão: 1.0</p><hr style="border:0;border-top:1.5px solid #000;margin:12px 0"></div>
+  <div style="text-align:right">Bernardo Reis, Carlos Diniz, Davi Mendoza e Luan Santos<br><br><div style="text-align:center">17/11/2026</div></div>
 </div>
 
 <h1>Descrição do Documento</h1>
