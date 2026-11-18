@@ -4,7 +4,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const RAIZ = path.resolve(__dirname, '..');
-const GITHUB = process.env.GITHUB_TESTES || '[link do seu repositório no GitHub]';
+const GITHUB = process.env.GITHUB_TESTES || 'https://github.com/Mennz/TrabalhoTestes';
 const VIDEO = process.env.VIDEO_LINK || 'Arquivo .mp4 enviado junto com este plano na entrega do Canvas';
 const ALUNO = process.env.ALUNO || 'Davi Mendoza Rezende';
 const DATA = '17/11/2026';

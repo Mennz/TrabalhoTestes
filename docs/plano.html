@@ -32,7 +32,7 @@ img.tela { width: 100%; border: 1px solid #888; }
 
 <h1>Descrição do Documento</h1>
 <table><tr><th style="width:20%">OBJETIVO</th><td>Este documento tem como objetivo documentar os testes feitos na aplicação Sistema de Gerenciamento de Personagens de RPG (TrabalhoPOO2).</td></tr>
-<tr><th>LOCALIZAÇÃO</th><td>Repositório de testes: [link do seu repositório no GitHub] (pasta <i>docs</i>). Sistema base (TI): https://github.com/ThiagoBotelho12/TrabalhoPOO2</td></tr></table>
+<tr><th>LOCALIZAÇÃO</th><td>Repositório de testes: https://github.com/Mennz/TrabalhoTestes (pasta <i>docs</i>). Sistema base (TI): https://github.com/ThiagoBotelho12/TrabalhoPOO2</td></tr></table>
 
 <h2>Histórico de Versões do Documento</h2>
 <table><tr><th>VERSÃO</th><th>OBJETIVO</th><th>DATA</th><th>RESPONSÁVEL</th></tr>
@@ -56,7 +56,7 @@ img.tela { width: 100%; border: 1px solid #888; }
 <p><b>Recursos necessários:</b> computador com Windows 10, .NET SDK 8, Google Chrome, xUnit 2.9, Selenium WebDriver 4.27 (o ChromeDriver é baixado automaticamente pelo Selenium Manager), Git e GitHub, Visual Studio ou Visual Studio Code.</p>
 <h2>1.2 Descrição do produto a ser testado</h2>
 <p>O Sistema de Gerenciamento de Personagens de RPG é uma aplicação de console em C# (.NET 8), desenvolvida como Trabalho Interdisciplinar de Programação Orientada a Objetos. Ele permite criar personagens de quatro classes (Guerreiro, Mago, Druida e Bardo) por meio do padrão Factory Method, controlar nível, experiência, atributos e habilidades, e gerenciar um inventário com armas, equipamentos, consumíveis e munição (adicionar, remover, buscar, ordenar, equipar e desequipar). Os personagens podem ser salvos e carregados em JSON.</p>
-<p><b>GitHub do sistema (TI):</b> https://github.com/ThiagoBotelho12/TrabalhoPOO2<br><b>GitHub dos testes:</b> [link do seu repositório no GitHub]</p>
+<p><b>GitHub do sistema (TI):</b> https://github.com/ThiagoBotelho12/TrabalhoPOO2<br><b>GitHub dos testes:</b> https://github.com/Mennz/TrabalhoTestes</p>
 <p class="nota">Como o sistema é de console e o Selenium só testa páginas web, o projeto de testes inclui uma tela web mínima (projeto Sistema.Web) que chama as mesmas classes do sistema (GerenciadorPersonagens, fábricas, Inventario, Personagem), sem reescrever nenhuma regra de negócio.</p>
 
 <h1>2. Escopo</h1>
@@ -885,7 +885,7 @@ Total de testes: 10
 <tr><td>DEF-01</td><td>Habilidades de nível superior nunca são liberadas. O construtor tenta adicionar a habilidade de nível 2 no nível 1 (mostra "❌ Requer nível 2") e o SubirNivel não tenta de novo, então o personagem nunca aprende a habilidade.</td><td>CT09, CT20, CT21</td><td>Alta</td><td>Aberto</td><td>Guardar a lista de habilidades da classe e criar um método LiberarHabilidades() que adiciona as que têm NivelRequerido ≤ Nivel e ainda não foram aprendidas. Chamar no construtor (sem mensagem de erro) e no SubirNivel.</td></tr><tr><td>DEF-02</td><td>ItemMunicao.Usar aceita quantidade negativa ou zero: Usar(-5) retorna true e a quantidade, o peso e o valor AUMENTAM.</td><td>CT10</td><td>Média</td><td>Corrigido (refatoração 2, reteste aprovado)</td><td>Validar quantidade &gt; 0 e ≤ estoque; guardar peso e valor unitários e recalcular peso/valor a partir deles.</td></tr><tr><td>DEF-03</td><td>Em níveis altos o XP para o próximo nível estoura o tipo int: no nível 100 a ficha mostra "XP: 0 / -2147483648".</td><td>CT13</td><td>Média</td><td>Aberto</td><td>Calcular com long/double e limitar o valor; no nível máximo (100) exibir "nível máximo" em vez do próximo limite.</td></tr><tr><td>DEF-04</td><td>Opções 4 e 5 do menu principal sem personagem selecionado não dão nenhum retorno ao usuário.</td><td>CT27</td><td>Baixa</td><td>Aberto</td><td>No ProcessarOpcaoPrincipal, quando PersonagemAtual for null, exibir "Nenhum personagem selecionado. Crie (1) ou selecione (3) um personagem." e aguardar ENTER.</td></tr><tr><td>DEF-05</td><td>Digitar texto em um submenu (inventário ou gerenciar personagem) gera FormatException que só é tratada no menu principal: o usuário é jogado de volta ao menu principal.</td><td>CT28</td><td>Baixa</td><td>Aberto</td><td>Reutilizar um método LerOpcao com int.TryParse em todos os submenus e repetir o submenu quando a entrada for inválida.</td></tr><tr><td>DEF-06</td><td>Data de nascimento (ou altura/peso) inválida no cadastro deixa o personagem "pela metade": ele fica na lista, sem itens iniciais e sem ser selecionado.</td><td>CT29</td><td>Alta</td><td>Corrigido (refatoração 1, reteste aprovado)</td><td>Dividir o CriarPersonagem em etapas e desfazer o cadastro (remover da lista) quando a configuração adicional falhar.</td></tr></table>
 
 <h1>8. Execução, repositório e vídeo</h1>
-<table><tr><th style="width:28%">Repositório dos testes</th><td>[link do seu repositório no GitHub]</td></tr>
+<table><tr><th style="width:28%">Repositório dos testes</th><td>https://github.com/Mennz/TrabalhoTestes</td></tr>
 <tr><th>Sistema base (TI)</th><td>https://github.com/ThiagoBotelho12/TrabalhoPOO2</td></tr>
 <tr><th>Vídeo narrativo</th><td>Arquivo .mp4 enviado junto com este plano na entrega do Canvas</td></tr>
 <tr><th>Testes unitários</th><td><code>dotnet test Testes.Unitarios</code></td></tr>

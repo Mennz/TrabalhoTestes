@@ -5,6 +5,8 @@ Trabalho de **Teste e Manutenção de Software** (Sistemas de Informação – P
 Sistema testado: **Sistema de Gerenciamento de Personagens de RPG** (Trabalho Interdisciplinar de POO, C# / .NET 8).
 Repositório original do sistema: https://github.com/ThiagoBotelho12/TrabalhoPOO2
 
+Repositório dos testes: https://github.com/Mennz/TrabalhoTestes
+
 O plano de testes completo (30 casos, prints, refatoração e relatório de defeitos) está em [`docs/Plano_de_Testes.pdf`](docs/Plano_de_Testes.pdf).
 
 ## Estrutura
